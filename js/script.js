@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Update total
         updateOrderSummary();
       } else {
-        alert("Invalid coupon code! Please try again.");
+        toastr.error("Invalid coupon code! Please try again.");
       }
     };
 
