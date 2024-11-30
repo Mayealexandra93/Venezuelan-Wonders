@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mayerlin Velasquez - Venezuelan Wonders</title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- AOS CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <!-- AOS JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Venezuelan Wonders</h1>
+    <!-- Cart Icon and Count -->
+    <div id="cartIcon" >
+      <span id="cartCount">0</span>
+      <img src="./img/shopping_car.png" alt="Cart" width="40">
+    </div>
+  </header>
+  
+  <main>
+    <section id="packages">
+      <h2>Available Packages</h2>
+      <!-- Packages Section -->
+      <div id="packagesContainer"></div>
+    </section>
+  </main>
+
+  <div id="cartSidebar">
+    <div id="sidebarContent">
+      <button id="closeSidebar">X</button>
+      <div class="CartResumenContainer">
+        <h2>Order Summary</h2>
+        <button id="clearAllButton">Clear All</button>
+        <h3 id="totalPrice">Total Price: $0.00</h3>
+        <h3 id="totalItems">Total Packages: 0</h3>
+        <!-- Apply discount coupon container-->
+        <div style="display: flex; align-items: center;">
+          <label for="coupon" style="margin-right: 8px;">
+            <h3 style="margin: 0;">Apply Discount Coupons:</h3>
+          </label>
+          <input type="text" name="coupon"  id="couponInput" maxlength= "6" placeholder="Coupon">
+          <button id="applyCoupon">Apply</button>
+        </div>
+        <p id="discountInfo" style="color: red; display: none;"></p>        
+      </div>
+      <div id="cartItems"></div>
+      <button id="checkoutButton">Checkout</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>Explore Venezuela with us!</p>
+  </footer>
+
+  <script src="./js/script.js"></script>
+  
+</body>
+</html>

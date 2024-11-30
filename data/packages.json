@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Angel Falls Adventure",
+    "price": 500,
+    "duration": 3,
+    "quantity": 1,
+    "rating": 4.5,
+    "image": "https://media.istockphoto.com/id/1457972072/photo/scenic-view-of-worlds-highest-waterfall-angel-fall-in-venezuela.jpg?s=612x612&w=0&k=20&c=PJsr6zejx-jztAqlXvQ5T_SlgTuvd2tUn7JU7WEIZvk=",
+    "people": 4,
+    "departureCity": "Ciudad Bolívar"
+  },
+  {
+    "name": "Los Roques Escape",
+    "price": 750,
+    "duration": 5,
+    "quantity": 1,
+    "rating": 4.8,
+    "image": "https://media.istockphoto.com/id/535164865/photo/tropical-white-sand-cay-beach-in-los-roques-venezuela.jpg?s=612x612&w=0&k=20&c=itWZ6ooT5VDWkScXFXb7Uu7XciVf5k-YhfvAV2m-KW4=",
+    "people": 2,
+    "departureCity": "Caracas"
+  },
+  {
+    "name": "Mérida Highlands",
+    "price": 300,
+    "duration": 4,
+    "quantity": 1,
+    "rating": 4.2,
+    "image": "https://media.istockphoto.com/id/1442697272/photo/merida-sign-and-cathedral.jpg?s=612x612&w=0&k=20&c=h1SJrQn56WXbv97UrbKTiZ8TxOMs9owzLrxrrZIgKZQ=",
+    "people": 3,
+    "departureCity": "Mérida"
+  },
+  {
+    "name": "Caracas City Tour",
+    "price": 150,
+    "duration": 2,
+    "quantity": 1,
+    "rating": 3.8,
+    "image": "https://media.istockphoto.com/id/1400166989/photo/modular-cabins-cable-car-against-the-bright-sky-clouds-ans-mountains-cableway-one-of-the.jpg?s=612x612&w=0&k=20&c=vZh0lQdFGicyQ97MS2pIkUyodUkcTOMavqkMxjnIjts=",
+    "people": 6,
+    "departureCity": "Caracas"
+  },
+  {
+    "name": "Orinoco Delta Cruise",
+    "price": 600,
+    "duration": 7,
+    "quantity": 1,
+    "rating": 4.7,
+    "image": "https://media.istockphoto.com/id/842209284/photo/people-enjoy-traveling-in-the-river-rhone-delta-in-the-camargue-using-a-car-and-horse-ferry.jpg?s=612x612&w=0&k=20&c=PYfZNVWj1q8DTqooiIK52kz_8F3nQ4M5qNKslAnJ8js=",
+    "people": 5,
+    "departureCity": "Tucupita"
+  },
+  {
+    "name": "Canaima National Park",
+    "price": 450,
+    "duration": 3,
+    "quantity": 1,
+    "rating": 4.6,
+    "image": "https://media.istockphoto.com/id/666855836/photo/angel-falls-from-the-river-bank.jpg?s=612x612&w=0&k=20&c=vUtr9a2K68bf-mrPu6ES9ZAp0tOLCKcrpfGVLLcY-78=",
+    "people": 2,
+    "departureCity": "Ciudad Bolívar"
+  },
+  {
+    "name": "Roraima Trekking",
+    "price": 900,
+    "duration": 6,
+    "quantity": 1,
+    "rating": 5,
+    "image": "https://media.istockphoto.com/id/942829162/photo/mount-roraima-venezuela-south-america.jpg?s=612x612&w=0&k=20&c=pmkKdH2JfmnaOs3BwiKhAWsxA7NI4NbIXKTNGIc3X-E=",
+    "people": 8,
+    "departureCity": "Santa Elena de Uairén"
+  },
+  {
+    "name": "Paraguaná Beaches",
+    "price": 200,
+    "duration": 3,
+    "quantity": 1,
+    "rating": 4.1,
+    "image": "https://media.istockphoto.com/id/471669544/photo/rio-de-janeiro.jpg?s=612x612&w=0&k=20&c=dpPeeRYN7PEXKbcuXeKmiHIeADo6VjmNem8yxiVRekc=",
+    "people": 4,
+    "departureCity": "Coro"
+  }
+]

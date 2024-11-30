@@ -1,0 +1,307 @@
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
+}
+
+header {
+  background: #4facfe;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  position: relative;
+}
+
+header h1 {
+ display: inline-flex;
+}
+
+
+#packages h2{
+  color:#1e3c72;
+}
+
+#cartIcon {
+  position: absolute;
+  right: 5%;
+  top: 30%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+#cartCount {
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 5px 10px;
+  font-size: 14px;
+  margin-left: -10px;
+  margin-top: -10px;
+}
+
+#packagesContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+  gap: 20px;
+  max-width: 1200px; /* Adjust this width if needed */
+  margin: 20px auto;
+  justify-content: center;
+}
+
+.package {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s ease-in-out; /* Smooth transition for opacity */
+}
+
+.package:hover {
+  opacity: 0.5; /* Adjust opacity on hover */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow to simulate lift */
+}
+
+.package img {
+  width: 100%;
+  max-width: 150px;
+  height: 150px; /* Fixed height */
+  object-fit: cover; /* Ensures image scaling without distortion */
+  border-radius: 8px;
+  margin: 0 auto;
+}
+
+.package h3 {
+  margin: 10px 0;
+}
+
+.package p {
+  margin: 5px 0;
+  text-align: center;
+}
+
+button {
+  background: #4facfe;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #e05500;
+}
+
+#cartSidebar {
+  position: fixed;
+  right: -100%; /* Completely hides the sidebar initially */
+  top: 0;
+  width: 350px;
+  height: 100%;
+  background: white;
+  box-shadow: -5px 0 5px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  transition: right 0.3s ease-in-out; /* Smooth slide-in effect */
+  overflow-y: auto; /* Enables vertical scrollbar */
+}
+
+#cartSidebar.open {
+  right: 0;
+}
+
+#sidebarContent {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.CartResumenContainer h2{
+  display: inline;
+}
+
+#clearAllButton{
+  right: 25%;
+  height: 26px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-left: 22%;
+}
+
+#cartItems .cart-item {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+/* Cart Sidebar Item Styling */
+.cart-item {
+ 
+  justify-content: space-between; /* Space between content */
+  align-items: center; /* Vertically align content */
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.cart-item-details {
+  flex: 1; /* Allow details to grow */
+}
+
+#applyCoupon{
+  height: 21.3px;
+  padding-bottom: 0;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.cart-item-actions {
+  display: flex; /* Flex layout for buttons */
+  align-items: center; /* Vertically align buttons */
+  gap: 10px; /* Space between buttons */
+}
+
+
+.cart-item-actions button {
+  padding: 5px 10px;
+  border: none;
+  background-color: #4facfe;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.cart-item-actions button:hover {
+  background-color: #f44336;
+}
+
+#car_img{
+ display: inline;
+ width: 48%;
+ margin-left: 30px;
+ height: auto;
+}
+
+#car_img img{
+  margin-top: 25%;
+  height: 60%;
+ }
+
+#item_descrip{ 
+  width: 48%;
+}
+
+#item_descrip h3{ 
+  font-size: 15px;
+}
+
+#item_descrip p{ 
+  font-size: 14px;
+}
+
+.item-pic{
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  width: 350px;
+  height: auto;
+  padding-top: 20px;
+}
+
+#checkoutButton{
+  position: sticky; /* Stick the button at the bottom */
+  bottom: 20px; /* Space from the bottom */
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #4facfe;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+#checkoutButton:hover{
+  background: #e05500;
+}
+
+#couponInput{
+  
+  width: 47px; 
+  text-align: center; 
+  margin-left: auto; 
+  margin-right: auto;
+}
+
+.cart-summary {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+.cart-summary p {
+  margin: 5px 0;
+}
+
+.cart-summary input {
+  padding: 5px;
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.cart-summary button {
+  background-color: #4facfe;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.clear-cart-button {
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.clear-cart-button:hover, .checkout-button:hover {
+  opacity: 0.9;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #4facfe;
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  #packagesContainer {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row for medium screens */
+  }
+
+  #cartIcon{
+    right: 0%;
+  }
+
+  #clearAllButton{
+    margin-left: 27%;
+  }
+}
+
+@media (max-width: 480px) {
+  #packagesContainer {
+    grid-template-columns: 1fr; /* 1 card per row for small screens */
+  }
+  
+}
