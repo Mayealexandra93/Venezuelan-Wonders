@@ -1,10 +1,93 @@
-/* styles.css */
+circlecircle/* styles.css */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   background: #f4f4f4;
 }
+
+main, footer {
+  font-family: 'Arial', sans-serif;
+}
+
+footer #myname{
+  font-size: 12px;
+  font-style: italic;
+}
+
+
+.availablePackagesDiv{
+  display: flex;
+  background-color: #4facfe;  
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 45px; /* Adjust padding as needed */
+}
+
+
+/* Landing Section */
+#landingSection {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+.leftContent {
+  flex: 3;
+  background-color: #0078D7; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  font-size: 2.5rem;
+  text-align: center;
+  padding: 20px;
+}
+
+.rightContent {
+  flex: 2;
+  position: relative;
+  background-image: url('../img/beach.jpeg'); /* Right section, beach image path */
+  background-size: cover;
+  background-position: center;
+}
+
+.mainImage {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.1); /*overlay */
+}
+
+.circleImages {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+}
+
+.circleImage {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  border: 4px solid white;
+  background-size: cover;
+  background-position: center;
+}
+
+#circle1 {
+  background-image: url('../img/circle1.jpg'); /* Airplane Picture */
+}
+
+#circle2 {
+  background-image: url('../img/circle2.jpg'); /* Beach image*/
+}
+
 
 header {
   background: #4facfe;
@@ -18,28 +101,42 @@ header h1 {
  display: inline-flex;
 }
 
-
-#packages h2{
-  color:#1e3c72;
-}
-
-#cartIcon {
-  position: absolute;
-  right: 5%;
-  top: 30%;
-  cursor: pointer;
+#cartIcon{
+  position: sticky; 
   display: flex;
-  align-items: center;
+  padding: 5px;  
+  padding-bottom: 35px;
 }
+
+.availablePackagesDiv  h2{
+  color:white;
+  display: inline-flex;
+  margin-left: 0%;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  font-size: 2rem;    
+}
+
+
+#cartIcon img {
+  right: 5%;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  position: absolute;
+  padding-top: 0px;  
+}
+
 
 #cartCount {
   background: red;
   color: white;
   border-radius: 50%;
   padding: 5px 10px;
-  font-size: 14px;
-  margin-left: -10px;
+  font-size: 14px;  
   margin-top: -10px;
+  position: absolute;
+  margin-left: 40.5%;
 }
 
 #packagesContainer {
@@ -118,6 +215,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  font-family: Arial, sans-serif;
 }
 
 .CartResumenContainer h2{

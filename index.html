@@ -4,28 +4,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mayerlin Velasquez - Venezuelan Wonders</title>
+  <!-- Style Sheet-->
   <link rel="stylesheet" href="./css/styles.css">
+
+  <!-- JQuery-->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
   <!-- AOS CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
   <!-- AOS JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+  <!-- Heart Icon-->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Toastr CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+  
+   <!-- Toastr JS -->
+  //<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  
 </head>
 <body>
   <header>
-    <h1>Venezuelan Wonders</h1>
-    <!-- Cart Icon and Count -->
-    <div id="cartIcon" >
-      <span id="cartCount">0</span>
-      <img src="./img/shopping_car.png" alt="Cart" width="40">
+    <div id="landingSection">
+      <div class="leftContent">
+        <h1>Venezuelan Wonders</h1>
+      </div>
+      <div class="rightContent">
+        <div class="mainImage"></div>
+        <div class="circleImages">
+          <div class="circleImage" id="circle1"></div>
+          <div class="circleImage" id="circle2"></div>
+        </div>
+      </div>
     </div>
+    
   </header>
   
   <main>
     <section id="packages">
-      <h2>Available Packages</h2>
+      <div class="availablePackagesDiv">
+        <h2 data-aos="fade-up">Available Packages</h2>
+        <!-- Cart Icon and Count -->
+        <div id="cartIcon" >
+            <span id="cartCount">0</span>
+            <img src="./img/shopping_car.png" alt="Cart" width="40">
+        </div>
+      </div>
       <!-- Packages Section -->
-      <div id="packagesContainer"></div>
+    <div id="packagesContainer"></div>
     </section>
   </main>
 
@@ -54,6 +83,7 @@
 
   <footer>
     <p>Explore Venezuela with us!</p>
+    <p id="myname" >Made with  <i class="fas fa-heart" style="color: white;"></i> by Mayerlin Velasquez - C0937885</p>
   </footer>
 
   <script src="./js/script.js"></script>
