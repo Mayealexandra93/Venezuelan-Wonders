@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const quantityEl = document.getElementById(`quantity-${index}`);
       const quantity = parseInt(quantityEl.textContent, 10);
   
-      fetch("packages.json").then(res => res.json()).then(packages => {
+      fetch("./data/packages.json").then(res => res.json()).then(packages => {
         const pkg = packages[index];
         const existingItem = cart.find(item => item.name === pkg.name);
   
