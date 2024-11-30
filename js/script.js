@@ -27,6 +27,35 @@ document.addEventListener("DOMContentLoaded", () => {
     let total = 0;
     let discount = 0;
 
+    // ------------------------------
+   // Functions: Local Storage Handling
+  // ------------------------------
+   // Load cart from localStorage
+   const loadCartFromLocalStorage = () => {
+    const savedCart = localStorage.getItem("cart");
+    console.log("Saved cart from localStorage:", savedCart); // Debug
+
+    if (savedCart) {
+        try {
+            const parsedCart = JSON.parse(savedCart);
+            console.log("Parsed cart:", parsedCart); // Debug
+
+            if (Array.isArray(parsedCart)) {
+                cart.push(...parsedCart); // Only push if it's an array
+            } else {
+                console.error("Parsed cart is not an array:", parsedCart);
+            }
+        } catch (error) {
+            console.error("Error parsing cart data from localStorage:", error);
+          }
+    }
+  };
+
+  const saveCartToLocalStorage = () => {
+      console.log("Saving cart to localStorage:", cart); // Debug
+      localStorage.setItem("cart", JSON.stringify(cart));
+  };
+
      // ------------------------------
     // Functions: Package Handling
     // ------------------------------
@@ -55,18 +84,10 @@ document.addEventListener("DOMContentLoaded", () => {
         `).join("");
       };
 
-      // Toggle sidebar visibility
-        const toggleSidebar = () => elements.cartSidebar.classList.toggle("open");
     
-        
-    // ------------------------------
-    // Initialization
-    // ------------------------------
-      
-    loadPackages(); // Load packages on page load
-
-    // Initialize AOS animations. Uninitialized animations might set opacity: 0 by default.
-        AOS.init(); 
+    // Toggle sidebar visibility
+      const toggleSidebar = () => elements.cartSidebar.classList.toggle("open");
+    
   
     // ------------------------------
     // Functions: Utility Operations
@@ -104,38 +125,40 @@ document.addEventListener("DOMContentLoaded", () => {
       `).join("");
     };
   
-    // Update the order summary (total, items count, discount)
+    // Update the order summary (total, travel packages count, discount)
     const updateOrderSummary = () => {
       const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
       total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
       elements.totalEl.textContent = `Total Price: $${(total - discount).toFixed(2)}`;
       elements.totalItemsEl.textContent = `Total Items: ${totalItems}`;
     };
+
   
-    // ------------------------------
-    // Functions: Cart Management
-    // ------------------------------
-  
-    // Add a package to the cart
-    window.addToCart = (index) => {
-      const quantityEl = document.getElementById(`quantity-${index}`);
-      const quantity = parseInt(quantityEl.textContent, 10);
-  
-      fetch("./data/packages.json").then(res => res.json()).then(packages => {
-        const pkg = packages[index];
-        const existingItem = cart.find(item => item.name === pkg.name);
-  
-        if (existingItem) {
-          existingItem.quantity += quantity;
-        } else {
-          cart.push({ ...pkg, quantity });
-        }
-  
-        updateCartCount();
-        updateCartSidebar();
-        updateOrderSummary();
-      });
-    };
+  // ------------------------------
+  // Functions: Cart Management
+  // ------------------------------
+
+  // Add a package to the cart
+  window.addToCart = (index) => {
+    const quantityEl = document.getElementById(`quantity-${index}`);
+    const quantity = parseInt(quantityEl.textContent, 10);
+
+    fetch("./data/packages.json").then(res => res.json()).then(packages => {
+      const pkg = packages[index];
+      const existingItem = cart.find(item => item.name === pkg.name);
+
+      if (existingItem) {
+        existingItem.quantity += quantity;
+      } else {
+        cart.push({ ...pkg, quantity });
+      }
+
+      updateCartCount();
+      updateCartSidebar();
+      updateOrderSummary();
+      saveCartToLocalStorage(); // Save changes to local storage
+    });
+  };
   
     // Adjust item quantity in the cart
     window.adjustCartQuantity = (index, change) => {
@@ -145,6 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
       updateCartCount();
       updateCartSidebar();
       updateOrderSummary();
+      saveCartToLocalStorage(); // Save changes to local storage
     };
   
     // Remove an item from the cart
@@ -153,6 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
       updateCartCount();
       updateCartSidebar();
       updateOrderSummary();
+      saveCartToLocalStorage(); // Save changes to local storage
     };
   
     // Adjust package quantity before adding to the cart
@@ -193,14 +218,30 @@ document.addEventListener("DOMContentLoaded", () => {
       updateCartCount(); // Update the cart count
       updateCartSidebar(); // Update the cart sidebar
       updateOrderSummary(); // Update the order summary
+      saveCartToLocalStorage(); // Save changes to local storage
     };
 
     // Add event listener to the Clear All button
     document.getElementById("clearAllButton").addEventListener("click", clearAllCart);
   
     // ------------------------------
-      // Event Listeners
-      // ------------------------------
+    // Initialization
+    // ------------------------------
+      
+    loadCartFromLocalStorage(); // Load the cart from local storage on page load
+    updateCartSidebar(); // Update the cart UI with loaded items
+    updateCartCount(); // Update the cart count with loaded items
+    updateOrderSummary(); // Update the order summary with loaded items
+    
+    loadPackages(); // Load packages on page load
+
+    // Initialize AOS animations. Uninitialized animations might set opacity: 0 by default.
+        AOS.init(); 
+
+
+    // ------------------------------
+    // Event Listeners
+    // ------------------------------
 
       elements.cartIcon.addEventListener("click", toggleSidebar);
       elements.closeSidebar.addEventListener("click", toggleSidebar);
