@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
     // Load packages from JSON and render them
     const loadPackages = async () => {
-        const response = await fetch("packages.json");
+        const response = await fetch("./data/packages.json");
         const packages = await response.json();
     
         elements.packagesContainer.innerHTML = packages.map((pkg, index) => `
