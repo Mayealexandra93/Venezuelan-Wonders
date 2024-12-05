@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     const cart = []; // Centralized cart definition
   
-    // Select DOM elements
-    const elements = {
+    // Select DOM elements_885
+    const elements_885 = {
       packagesContainer: document.getElementById("packagesContainer"),
       cartIcon: document.getElementById("cartIcon"),
       cartCount: document.getElementById("cartCount"),
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
       totalEl: document.getElementById("totalPrice"),
       totalItemsEl: document.getElementById("totalItems"),
       couponInput: document.getElementById("couponInput"),
-      applyCouponButton: document.getElementById("applyCoupon"),
+      applyCoupon_885Button: document.getElementById("applyCoupon_885"),
       discountInfo: document.getElementById("discountInfo"),      
     };
 
@@ -31,19 +31,19 @@ document.addEventListener("DOMContentLoaded", () => {
    // Functions: Local Storage Handling
   // ------------------------------
    // Load cart from localStorage
-   const loadCartFromLocalStorage = () => {
-    const savedCart = localStorage.getItem("cart");
-    console.log("Saved cart from localStorage:", savedCart); // Debug
+   const loadCartFromLocalStorage_885 = () => {
+    const savedCart_885 = localStorage.getItem("cart");
+    console.log("Saved cart from localStorage:", savedCart_885); // Debug
 
-    if (savedCart) {
+    if (savedCart_885) {
         try {
-            const parsedCart = JSON.parse(savedCart);
-            console.log("Parsed cart:", parsedCart); // Debug
+            const parsedCart_885 = JSON.parse(savedCart_885);
+            console.log("Parsed cart:", parsedCart_885); // Debug
 
-            if (Array.isArray(parsedCart)) {
-                cart.push(...parsedCart); // Only push if it's an array
+            if (Array.isArray(parsedCart_885)) {
+                cart.push(...parsedCart_885); // Only push if it's an array
             } else {
-                console.error("Parsed cart is not an array:", parsedCart);
+                console.error("Parsed cart is not an array:", parsedCart_885);
             }
         } catch (error) {
             console.error("Error parsing cart data from localStorage:", error);
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  const saveCartToLocalStorage = () => {
+  const saveCartToLocalStorage_885 = () => {
       console.log("Saving cart to localStorage:", cart); // Debug
       localStorage.setItem("cart", JSON.stringify(cart));
   };
@@ -61,11 +61,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // ------------------------------
   
     // Load packages from JSON and render them
-    const loadPackages = async () => {
+    const loadPackages_885 = async () => {
         const response = await fetch("./data/packages.json");
         const packages = await response.json();
     
-        elements.packagesContainer.innerHTML = packages.map((pkg, index) => `
+        elements_885.packagesContainer.innerHTML = packages.map((pkg, index) => `
           <div class="package" data-aos="fade-up">
             <img src="${pkg.image}" alt="${pkg.name}" width="200">
             <h3>${pkg.name}</h3>
@@ -75,18 +75,18 @@ document.addEventListener("DOMContentLoaded", () => {
             <p>Departure: ${pkg.departureCity}</p>
             <p>Rating: ${"⭐".repeat(Math.floor(Math.random() * 5) + 1)}</p>
             <div>
-              <button onclick="adjustQuantity(${index}, -1)">-</button>
+              <button onclick="adjustQuantity_885(${index}, -1)">-</button>
               <span id="quantity-${index}">1</span>
-              <button onclick="adjustQuantity(${index}, 1)">+</button>
+              <button onclick="adjustQuantity_885(${index}, 1)">+</button>
             </div>
-            <button onclick="addToCart(${index})">Add to Cart</button>
+            <button onclick="addToCart_885(${index})">Add to Cart</button>
           </div>
         `).join("");
       };
 
     
     // Toggle sidebar visibility
-      const toggleSidebar = () => elements.cartSidebar.classList.toggle("open");
+      const toggleSidebar_885 = () => elements_885.cartSidebar.classList.toggle("open");
     
   
     // ------------------------------
@@ -94,14 +94,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // ------------------------------
   
     // Update the cart count displayed on the cart icon
-    function updateCartCount() {
+    function updateCartCount_885() {
         const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-        elements.cartCount.textContent = totalItems;
+        elements_885.cartCount.textContent = totalItems;
     }
   
     // Update the cart items in the sidebar
-    const updateCartSidebar = () => {
-      elements.cartItems.innerHTML = cart.map((item, index) => `
+    const updateCartSidebar_885 = () => {
+      elements_885.cartItems.innerHTML = cart.map((item, index) => `
         <div class="cart-item">
           <div class="item-pic">
             <div id="item_descrip">
@@ -117,20 +117,20 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           </div>
           <div class="cart-item-actions">
-            <button onclick="adjustCartQuantity(${index}, -1)">-</button>
-            <button onclick="adjustCartQuantity(${index}, 1)">+</button>
-            <button onclick="removeFromCart(${index})">Remove</button>
+            <button onclick="adjustCartQuantity_885(${index}, -1)">-</button>
+            <button onclick="adjustCartQuantity_885(${index}, 1)">+</button>
+            <button onclick="removeFromCart_885(${index})">Remove</button>
           </div>
         </div>
       `).join("");
     };
   
     // Update the order summary (total, travel packages count, discount)
-    const updateOrderSummary = () => {
+    const updateOrderSummary_885 = () => {
       const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
       total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-      elements.totalEl.textContent = `Total Price: $${(total - discount).toFixed(2)}`;
-      elements.totalItemsEl.textContent = `Total Items: ${totalItems}`;
+      elements_885.totalEl.textContent = `Total Price: $${(total - discount).toFixed(2)}`;
+      elements_885.totalItemsEl.textContent = `Total Items: ${totalItems}`;
     };
 
   
@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ------------------------------
 
   // Add a package to the cart
-  window.addToCart = (index) => {
+  window.addToCart_885 = (index) => {
     const quantityEl = document.getElementById(`quantity-${index}`);
     const quantity = parseInt(quantityEl.textContent, 10);
 
@@ -153,35 +153,35 @@ document.addEventListener("DOMContentLoaded", () => {
         cart.push({ ...pkg, quantity });
       }
 
-      updateCartCount();
-      updateCartSidebar();
-      updateOrderSummary();
-      saveCartToLocalStorage(); // Save changes to local storage
+      updateCartCount_885();
+      updateCartSidebar_885();
+      updateOrderSummary_885();
+      saveCartToLocalStorage_885(); // Save changes to local storage
     });
   };
   
     // Adjust item quantity in the cart
-    window.adjustCartQuantity = (index, change) => {
+    window.adjustCartQuantity_885 = (index, change) => {
       cart[index].quantity += change;
       if (cart[index].quantity <= 0) cart.splice(index, 1);
   
-      updateCartCount();
-      updateCartSidebar();
-      updateOrderSummary();
-      saveCartToLocalStorage(); // Save changes to local storage
+      updateCartCount_885();
+      updateCartSidebar_885();
+      updateOrderSummary_885();
+      saveCartToLocalStorage_885(); // Save changes to local storage
     };
   
     // Remove an item from the cart
-    window.removeFromCart = (index) => {
+    window.removeFromCart_885 = (index) => {
       cart.splice(index, 1);
-      updateCartCount();
-      updateCartSidebar();
-      updateOrderSummary();
-      saveCartToLocalStorage(); // Save changes to local storage
+      updateCartCount_885();
+      updateCartSidebar_885();
+      updateOrderSummary_885();
+      saveCartToLocalStorage_885(); // Save changes to local storage
     };
   
     // Adjust package quantity before adding to the cart
-    window.adjustQuantity = (index, change) => {
+    window.adjustQuantity_885 = (index, change) => {
       const quantityEl = document.getElementById(`quantity-${index}`);
       let quantity = parseInt(quantityEl.textContent, 10) + change;
       quantity = Math.max(1, quantity);
@@ -189,20 +189,20 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   
     // Apply a discount coupon
-    const applyCoupon = () => {
-      const couponCode = elements.couponInput.value.trim().toUpperCase();
+    const applyCoupon_885 = () => {
+      const couponCode = elements_885.couponInput.value.trim().toUpperCase();
       if (validCoupons[couponCode]) {
         const discountRate = validCoupons[couponCode];
         discount = total * discountRate;
   
         // Update UI
-        elements.discountInfo.style.display = "block";
-        elements.discountInfo.textContent = `Discount Applied: -$${discount.toFixed(2)} (${couponCode})`;
-        elements.couponInput.style.display = "none";
-        elements.applyCouponButton.style.display = "none";
+        elements_885.discountInfo.style.display = "block";
+        elements_885.discountInfo.textContent = `Discount Applied: -$${discount.toFixed(2)} (${couponCode})`;
+        elements_885.couponInput.style.display = "none";
+        elements_885.applyCoupon_885Button.style.display = "none";
   
         // Update total
-        updateOrderSummary();
+        updateOrderSummary_885();
       } else {
         toastr.error("Invalid coupon code! Please try again.");
       }
@@ -212,28 +212,28 @@ document.addEventListener("DOMContentLoaded", () => {
     // Clear All Button Functionality
     // ------------------------------
 
-    const clearAllCart = () => {
+    const clearAllCart_885 = () => {
       cart.length = 0;  // Clear all items in the cart
 
-      updateCartCount(); // Update the cart count
-      updateCartSidebar(); // Update the cart sidebar
-      updateOrderSummary(); // Update the order summary
-      saveCartToLocalStorage(); // Save changes to local storage
+      updateCartCount_885(); // Update the cart count
+      updateCartSidebar_885(); // Update the cart sidebar
+      updateOrderSummary_885(); // Update the order summary
+      saveCartToLocalStorage_885(); // Save changes to local storage
     };
 
     // Add event listener to the Clear All button
-    document.getElementById("clearAllButton").addEventListener("click", clearAllCart);
+    document.getElementById("clearAllButton").addEventListener("click", clearAllCart_885);
   
     // ------------------------------
     // Initialization
     // ------------------------------
       
-    loadCartFromLocalStorage(); // Load the cart from local storage on page load
-    updateCartSidebar(); // Update the cart UI with loaded items
-    updateCartCount(); // Update the cart count with loaded items
-    updateOrderSummary(); // Update the order summary with loaded items
+    loadCartFromLocalStorage_885(); // Load the cart from local storage on page load
+    updateCartSidebar_885(); // Update the cart UI with loaded items
+    updateCartCount_885(); // Update the cart count with loaded items
+    updateOrderSummary_885(); // Update the order summary with loaded items
     
-    loadPackages(); // Load packages on page load
+    loadPackages_885(); // Load packages on page load
 
     // Initialize AOS animations. Uninitialized animations might set opacity: 0 by default.
         AOS.init(); 
@@ -243,10 +243,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Event Listeners
     // ------------------------------
 
-      elements.cartIcon.addEventListener("click", toggleSidebar);
-      elements.closeSidebar.addEventListener("click", toggleSidebar);
-      elements.checkoutButton.addEventListener("click", () => alert("Proceed to payment page!"));
-      elements.applyCouponButton.addEventListener("click", applyCoupon);
+      elements_885.cartIcon.addEventListener("click", toggleSidebar_885);
+      elements_885.closeSidebar.addEventListener("click", toggleSidebar_885);
+      elements_885.checkoutButton.addEventListener("click", () => alert("Proceed to payment page!"));
+      elements_885.applyCoupon_885Button.addEventListener("click", applyCoupon_885);
 
   });
   
