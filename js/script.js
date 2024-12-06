@@ -30,30 +30,38 @@ document.addEventListener("DOMContentLoaded", () => {
     // ------------------------------
    // Functions: Local Storage Handling
   // ------------------------------
+
+  // Save cart into Browser's Local Storage
+  const saveCartToLocalStorage_885 = () => {
+    // Step 1: Log Cart Data (Debugging)
+    console.log("Saving cart to localStorage:", cart);
+
+    // Step 2: Serialize and Save Data:
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
+
    // Load cart from localStorage
    const loadCartFromLocalStorage_885 = () => {
-    const savedCart_885 = localStorage.getItem("cart");
+    // Step 1: Get Data from localStorage
+    const savedCart_885 = localStorage.getItem("cart"); 
     console.log("Saved cart from localStorage:", savedCart_885); // Debug
 
     if (savedCart_885) {
         try {
+          // Step 2: Parse the Retrieved Data
             const parsedCart_885 = JSON.parse(savedCart_885);
             console.log("Parsed cart:", parsedCart_885); // Debug
 
+            // Step 3: Validate the Parsed Data:
             if (Array.isArray(parsedCart_885)) {
                 cart.push(...parsedCart_885); // Only push if it's an array
             } else {
                 console.error("Parsed cart is not an array:", parsedCart_885);
             }
-        } catch (error) {
+        } catch (error) { // Step 4: Handle Parsing Errors
             console.error("Error parsing cart data from localStorage:", error);
           }
     }
-  };
-
-  const saveCartToLocalStorage_885 = () => {
-      console.log("Saving cart to localStorage:", cart); // Debug
-      localStorage.setItem("cart", JSON.stringify(cart));
   };
 
      // ------------------------------
@@ -61,11 +69,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // ------------------------------
   
     // Load packages from JSON and render them
-    const loadPackages_885 = async () => {
-        const response = await fetch("./data/packages.json");
-        const packages = await response.json();
-    
-        elements_885.packagesContainer.innerHTML = packages.map((pkg, index) => `
+    const loadPackages_885 = async () => {                     // 1. Asynchronous Function Declaration
+        const response = await fetch("./data/packages.json"); // 2. Fetching Data from the JSON File
+        const packages = await response.json();              // 3. Parsing the JSON Response
+      
+        // 4. Rendering Packages Dynamically with map
+        elements_885.packagesContainer.innerHTML = packages.map((pkg, index) => 
+        // 5. Template Literal for Package HTML Structure
+          ` 
           <div class="package" data-aos="fade-up">
             <img src="${pkg.image}" alt="${pkg.name}" width="200">
             <h3>${pkg.name}</h3>
@@ -81,18 +92,22 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <button onclick="addToCart_885(${index})">Add to Cart</button>
           </div>
-        `).join("");
+          `
+          ).join(""); // 6. Injecting the HTML into the Page
       };
-
-    
-    // Toggle sidebar visibility
-      const toggleSidebar_885 = () => elements_885.cartSidebar.classList.toggle("open");
-    
-  
+        
     // ------------------------------
     // Functions: Utility Operations
     // ------------------------------
   
+    // Adjust package quantity before adding to the cart
+    window.adjustQuantity_885 = (index, change) => {
+      const quantityEl = document.getElementById(`quantity-${index}`);
+      let quantity = parseInt(quantityEl.textContent, 10) + change;
+      quantity = Math.max(1, quantity);
+      quantityEl.textContent = quantity;
+    };
+
     // Update the cart count displayed on the cart icon
     function updateCartCount_885() {
         const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -140,23 +155,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Add a package to the cart
   window.addToCart_885 = (index) => {
+    // 1. Getting the Selected Quantity
     const quantityEl = document.getElementById(`quantity-${index}`);
     const quantity = parseInt(quantityEl.textContent, 10);
 
+    // 2. Fetching Package Data
     fetch("./data/packages.json").then(res => res.json()).then(packages => {
+      // 3. Checking if the Package is Already in the Cart
       const pkg = packages[index];
       const existingItem = cart.find(item => item.name === pkg.name);
 
+      // 4. Updating the Cart
       if (existingItem) {
         existingItem.quantity += quantity;
       } else {
         cart.push({ ...pkg, quantity });
       }
 
+      // 5. Updating the UI
       updateCartCount_885();
       updateCartSidebar_885();
       updateOrderSummary_885();
-      saveCartToLocalStorage_885(); // Save changes to local storage
+      saveCartToLocalStorage_885(); // 6. Saving to Local Storage
     });
   };
   
@@ -180,13 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
       saveCartToLocalStorage_885(); // Save changes to local storage
     };
   
-    // Adjust package quantity before adding to the cart
-    window.adjustQuantity_885 = (index, change) => {
-      const quantityEl = document.getElementById(`quantity-${index}`);
-      let quantity = parseInt(quantityEl.textContent, 10) + change;
-      quantity = Math.max(1, quantity);
-      quantityEl.textContent = quantity;
-    };
+
   
     // Apply a discount coupon
     const applyCoupon_885 = () => {
@@ -238,6 +252,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initialize AOS animations. Uninitialized animations might set opacity: 0 by default.
         AOS.init(); 
 
+     // Toggle sidebar visibility
+     const toggleSidebar_885 = () => elements_885.cartSidebar.classList.toggle("open");
 
     // ------------------------------
     // Event Listeners
